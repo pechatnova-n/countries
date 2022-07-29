@@ -8,7 +8,7 @@ import {Detail} from "./pages/Detail";
 import {useState} from "react";
 
 
-//1.34min
+//1.41min
 
 function App() {
     const [countries, setCountries] = useState([]);
