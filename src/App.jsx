@@ -6,6 +6,7 @@ import {HomePage} from "./pages/HomePage";
 import {NotFound} from "./pages/NotFound";
 import {Detail} from "./pages/Detail";
 import {useState} from "react";
+import {Login} from "./components/Login";
 
 
 //1.41min
@@ -21,6 +22,7 @@ function App() {
             <Routes>
                 <Route index element={<HomePage countries={countries} setCountries={setCountries} />} path='/' />
                 <Route element={<Detail />} path='/country/:name' />
+                <Route element={<Login />} path='/login' />
                 <Route element={<NotFound />} path='*' />
             </Routes>
         </Main>

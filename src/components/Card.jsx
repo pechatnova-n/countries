@@ -21,7 +21,7 @@ const CardBody = styled.div`
     padding: 1rem 1.5rem 2rem;
 `;
 
-const CardTitle = styled.p`
+const CardTitle = styled.div`
     margin: 0;
     font-size: var(--fs-md);
     font-weight: var(--fw-bold);

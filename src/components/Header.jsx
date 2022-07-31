@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {IoMoon, IoMoonOutline} from 'react-icons/io5';
 import {Container} from "./Container";
 import {Link} from "react-router-dom";
+import {Login} from "./Login";
 
 const HeaderEl = styled.header`
      background-color: var(--colors-bg);
@@ -19,11 +20,20 @@ const Wrapper = styled.div`
 const Title = styled(Link).attrs({
     to: '/'
 })`
-    color: var(--color-text);
+    color: var(--colors-text);
     font-size: var(--fs-sm);
     text-decoration: none;
     font-weight: var(--fw-bold);
 `;
+
+const LoginLink = styled(Link).attrs({
+    to: "/login"
+})`
+    color: var(--color-text);
+    font-size: var(--fs-sm);
+    cursor: pointer;
+    text-decoration: none;
+`
 
 const ModeSwitcher = styled.div`
     color: var(--color-text);
@@ -54,6 +64,7 @@ const Header = () => {
             <Container>
                 <Wrapper>
                     <Title>Where is the world?</Title>
+                    <LoginLink>Login</LoginLink>
                     <ModeSwitcher onClick={changeTheme}>
                         {theme === 'light' ? <IoMoonOutline size="14px" /> : <IoMoon size="14px" />}{theme}
                     </ModeSwitcher>
