@@ -15,7 +15,7 @@ export const Login = () => {
     });
 
     const onSubmit = (data) => {
-        console.log(JSON.stringify(data))
+        alert(JSON.stringify(data))
         reset();
     }
 

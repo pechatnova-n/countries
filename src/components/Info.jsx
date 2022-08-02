@@ -97,22 +97,28 @@ export const Info = (props) => {
         subregion,
         currencies,
         languages = [],
-        borders,
+        borders = [],
     } = props;
 
+    let languagesArray = [];
+    for(let key in languages) {
+        let lang = languages[key];
+        languagesArray.push(lang);
+    }
+
+    let currenciesArray = [];
+    for(let value of Object.values(currencies)) {
+        currenciesArray.push(value.name);
+    }
 
     const navigate =  useNavigate();
     const [neighbors, setNeighbors] = useState([]);
 
-
     useEffect(() => {
-        if(borders.length)
         axios
             .get(filterByCode(borders))
             .then(({ data }) => setNeighbors(data.map((c) => c.name.common)));
     }, [borders]);
-
-
 
 
     return (
@@ -139,26 +145,22 @@ export const Info = (props) => {
                         </ListItem>
                     </List>
                     <List>
-                       <ListItem>
-                          1
-                        </ListItem>
-               {/*         <ListItem>
-                            <b>Currency:</b>{currencies.map(c => <span key={population}>{c.EUR.name} </span>)}
+                        <ListItem>
+                            <b>Currency: </b>{currenciesArray.map(c => <span key={population}>{c} </span>)}
                         </ListItem>
                         <ListItem>
-                            <b>Languages:</b> {languages.map(l => (<span key={population}>{l.eng} </span>))}
-                        </ListItem>*/}
+                            <b>Languages: </b> {languagesArray.map(l => (<span key={population}>{l} </span>))}
+                        </ListItem>
                     </List>
                 </ListGroup>
                 <Meta>
-                    <b>Border Countries</b>
-                    {!borders.length ? (
-                        <span>There is no border countries</span>
-                    ) : (
-                        <TagGroup>
+                    <b>Border Countries </b>
+                    {(props.borders) ?
+                        (<TagGroup>
                             {neighbors.map((b) => (<Tag onClick={() => navigate(`/country/${b}`)} key={b}>{b} </Tag>))}
-                        </TagGroup>
-                    )}
+                        </TagGroup>) :
+                        (<span>There is no border countries</span>)
+                    }
                 </Meta>
             </div>
         </Wrapper>
